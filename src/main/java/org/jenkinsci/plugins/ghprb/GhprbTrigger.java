@@ -137,6 +137,9 @@ public class GhprbTrigger extends Trigger<AbstractProject<?, ?>> {
         values.add(pullIdPv);
         values.add(new StringParameterValue("ghprbTargetBranch", String.valueOf(cause.getTargetBranch())));
         values.add(new StringParameterValue("ghprbSourceBranch", String.valueOf(cause.getSourceBranch())));
+        values.add(new StringParameterValue("issueBranch", String.valueOf(cause.getSourceBranch())));
+        values.add(new StringParameterValue("forkAuthor", String.valueOf(cause.getForkAuthor())));
+
         // it's possible the GHUser doesn't have an associated email address
         values.add(new StringParameterValue("ghprbPullAuthorEmail", cause.getAuthorEmail() != null ? cause.getAuthorEmail() : ""));
         values.add(new StringParameterValue("ghprbPullDescription", String.valueOf(cause.getShortDescription())));
