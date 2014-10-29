@@ -29,6 +29,7 @@ public class GhprbPullRequest {
     private Date updated;
     private String head;
     private String forkAuthor;
+    private String taskLabel;
     private boolean mergeable;
     private String reponame;
     private String target;
@@ -50,6 +51,7 @@ public class GhprbPullRequest {
         title = pr.getTitle();
         author = pr.getUser();
         forkAuthor = pr.getHead().getUser().getLogin();
+        taskLabel = pr.getHead().getLabel();
         reponame = repo.getName();
         target = pr.getBase().getRef();
         source = pr.getHead().getRef();
@@ -311,6 +313,10 @@ public class GhprbPullRequest {
 
     public String getForkAuthor() {
         return forkAuthor;
+    }
+
+    public String getTaskLabel() {
+        return taskLabel;
     }
 
     public boolean isMergeable() {

@@ -14,17 +14,19 @@ public class GhprbCause extends Cause{
 	private final int pullID;
 	private final boolean merged;
     private final String forkAuthor;
+    private final String taskLabel;
 	private final String targetBranch;
 	private final String sourceBranch;
 	private final String authorEmail;
 	private final String title;
     private final URL url;
 
-    public GhprbCause(String commit, int pullID, boolean merged, String forkAuthor, String targetBranch, String sourceBranch, String authorEmail, String title, URL url){
+    public GhprbCause(String commit, int pullID, boolean merged, String forkAuthor, String taskLabel, String targetBranch, String sourceBranch, String authorEmail, String title, URL url){
 		this.commit = commit;
 		this.pullID = pullID;
 		this.merged = merged;
         this.forkAuthor = forkAuthor;
+        this.taskLabel = taskLabel;
 		this.targetBranch = targetBranch;
 		this.sourceBranch = sourceBranch;
 		this.authorEmail = authorEmail;
@@ -51,6 +53,10 @@ public class GhprbCause extends Cause{
 
     public String getForkAuthor(){
         return forkAuthor;
+    }
+
+    public String getTaskLabel() {
+        return taskLabel;
     }
 
 	public String getTargetBranch() {
