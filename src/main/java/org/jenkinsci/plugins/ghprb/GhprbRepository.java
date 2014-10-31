@@ -116,7 +116,10 @@ public class GhprbRepository {
 
     public void createCommitStatus(AbstractBuild<?, ?> build, GHCommitState state, String message, int id) {
         String sha1 = build.getCause(GhprbCause.class).getCommit();
-        createCommitStatus(sha1, state, Jenkins.getInstance().getRootUrl() + build.getUrl(), message, id);
+        String taskLabel = build.getCause(GhprbCause.class).getTaskLabel();
+        String cdashLink = "http://dash.maidsafe.net/index.php?project=MaidSafe&display=project&showfilters=1&filtercount=1&showfilters=1&field1=label/string&compare1=61&value1=";
+        //createCommitStatus(sha1, state, Jenkins.getInstance().getRootUrl() + build.getUrl(), message, id);
+        createCommitStatus(sha1, state, cdashLink + taskLabel, message, id);
     }
 
     public void createCommitStatus(String sha1, GHCommitState state, String url, String message, int id) {

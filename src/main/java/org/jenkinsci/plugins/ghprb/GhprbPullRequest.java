@@ -99,6 +99,7 @@ public class GhprbPullRequest {
 
             // the title could have been updated since the original PR was opened
             title = pr.getTitle();
+            taskLabel = pr.getHead().getLabel();
             int commentsChecked = checkComments(pr);
             boolean newCommit = checkCommit(pr.getHead().getSha());
 
@@ -183,7 +184,7 @@ public class GhprbPullRequest {
 
     private void build() {
         String message = helper.getBuilds().build(this);
-		repo.createCommitStatus(head, GHCommitState.PENDING, null, message,id);
+		repo.createCommitStatus(head, GHCommitState.PENDING, null, message, id);
         logger.log(Level.INFO, message);
     }
 
